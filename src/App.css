@@ -94,7 +94,43 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   transform: translateY(2px);
 }
+.meme_img{
+  position: relative;
+  display: inline-block;
+}
 .meme_img >img{
   margin: 40px 0px;
   width: 477px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  z-index: 0;
+}
+.meme--text-top,.meme--text-bottom{
+  position: absolute;    
+    height: 100%;
+    text-align: center;    
+    width: 100%;
+    word-wrap:break-word
+}
+.meme--text-top::before{
+  content: '';
+  display: inline-block;
+  height: 0%;
+  vertical-align: middle;
+}
+.meme--text-bottom::before{
+  content: '';
+  display: inline-block;
+  height: 70%;
+  vertical-align: middle;
+}
+.meme--text-top > h2,.meme--text-bottom > h2{
+  font-family: impact, sans-serif;
+  
+  font-size: 2.2em;
+  text-transform: uppercase;
+  color: rgba(96, 0, 78, 0.742);
+  letter-spacing: 1px;
+  z-index: 1;
 }
