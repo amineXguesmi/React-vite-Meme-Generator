@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../../public/assets/Troll Face.png'
+import image from './../assets/Troll Face.png'
 const Header = () => {
   return (
     <div className="header_container">

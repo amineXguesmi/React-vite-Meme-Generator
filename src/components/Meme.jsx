@@ -1,10 +1,13 @@
 import React from 'react'
-
-const Meme = () => {
+import { fetchMemes } from '../functions/api'
+ const Meme = () => {
   const [allmeme,setAllMeme]=React.useState([])
-  React.useEffect(function(){
-    fetch("https://api.imgflip.com/get_memes").then(res => res.json()).then(data =>setAllMeme(data.data.memes))
-  },[])
+   React.useEffect(() => {
+     fetchMemes().then(data => setAllMeme(data));
+   },[])
+
+ 
+
   const [meme,setMeme]=React.useState({
     topText:"",
     bottomText:"",
@@ -12,6 +15,7 @@ const Meme = () => {
     height:"",
     width:"",
   })
+
   function handleChange(event){
       const {name,value}=event.target
       setMeme(prevMeme => ({
@@ -20,7 +24,7 @@ const Meme = () => {
       }))
       
   }
-     function getmeme(){
+     function getMeme(){
       const a=Math.floor(Math.random()*allmeme.length)
       if(allmeme[a].box_count==2)
         {setMeme((prevMeme)=>{
@@ -29,7 +33,7 @@ const Meme = () => {
             randomImage:allmeme[a].url,
           }
         });}
-     else  return getmeme()  
+      else return getMeme()  
     }
 
   return (
@@ -40,7 +44,7 @@ const Meme = () => {
       <input type="text" placeholder="and take my money" name="bottomText" value={meme.bottomText} onChange={handleChange} />
     </div>
     <div className="meme_button">
-        <button onClick={getmeme}>Get a new meme image</button>
+          <button onClick={getMeme}>Get a new meme image</button>
     </div>
         </div>
         <div className="meme_img">  
